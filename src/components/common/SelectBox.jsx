@@ -21,17 +21,21 @@ const Label = styled.label`
 `;
 
 function SelectBox({ label, options = [], value, onSelect }) {
+  function handleSelect(value) {
+  
+    onSelect({ type: label, [label]: value});
+  }
   return (
     <Wrapper>
       <Label htmlFor={label}>{label}</Label>
       <Select
         name={label}
         value={value}
-        onChange={(e) => onSelect(e.target.value)}
+        onChange={(e) => handleSelect(e.target.value)}
       >
-        {options.map((value, i) => (
-          <option key={i} value={value}>
-            {value}
+        {options.map((item, i) => (
+          <option key={i} id={item.key} value={item.value}>
+            {item.value}
           </option>
         ))}
       </Select>

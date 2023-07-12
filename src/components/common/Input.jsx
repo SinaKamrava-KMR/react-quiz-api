@@ -23,13 +23,18 @@ const Label = styled.label`
 `;
 
 function Input({ value = 10, label, onChange = () => {} }) {
+  function handleOnChange(value) {
+    if (isNaN(Number(value))) return;
+    onChange({ type: "amount", amount: value });
+  }
+
   return (
     <Wrapper>
       <Label htmlFor="number">{label}</Label>
       <InputStyle
         name="number"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => handleOnChange(e.target.value)}
       />
     </Wrapper>
   );
