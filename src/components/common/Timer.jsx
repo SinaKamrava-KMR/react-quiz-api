@@ -34,7 +34,7 @@ function Timer({ timeLength, onFinishedTime }) {
     }
     const id = setInterval(() => {
       setTime(DecTime(time));
-    }, 100);
+    }, 1000);
 
     return () => {
       clearInterval(id);
